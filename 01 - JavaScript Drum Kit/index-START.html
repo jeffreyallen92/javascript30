@@ -59,6 +59,32 @@
 
 <script>
 
+  function playSound(e){
+    
+    // `` the literal 
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+    if (!audio) return; // stop execution if not found
+    // audio.loop = true; fun times. just plays sound over n over again
+    
+    audio.currentTime = 0; // In order to play in rapid succession
+    audio.play();
+    
+    key.classList.add('playing');
+
+  }
+
+  function removeTransition(e){
+    if(e.propertyName !== 'transform') return;
+    this.classList.remove('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+  window.addEventListener('keydown', playSound);
+
 </script>
 
 

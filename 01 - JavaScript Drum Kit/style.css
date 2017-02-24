@@ -32,7 +32,8 @@ body,html {
 }
 
 .playing {
-  transform: scale(1.1);
+  /* increase size of element */
+  transform: scale(1.5);
   border-color: #ffc600;
   box-shadow: 0 0 1rem #ffc600;
 }
